@@ -1,0 +1,111 @@
+/*
+:root {
+  --sliders-height: 40px;
+  --white: #fff;
+}
+*/
+
+.component, .component div {
+user-drag: none; 
+user-select: none;
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+}
+
+.component {
+  display: flex;
+  flex-direction: column;
+}
+
+.limits {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sliders {
+  display: block;
+  position: relative;
+  height: 40px;
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.line,
+.crossLine {
+
+  display: block;
+  position:absolute;
+}
+
+.line {
+  top:15px;
+  bottom:15px;
+  left:0;
+  right:0;
+  background-color:#aaa;
+  border-radius:10px;
+  overflow: hidden;
+}
+
+.crossLine {
+  top:0;
+  bottom:0;
+  background-color:#f60;
+}
+
+.selector {
+  background-color: rgba(0,0,0, 0.3);
+  display: block;
+  position:absolute;
+  width:40px;
+  height:40px;
+  margin-left:-20px;
+  cursor: pointer;
+}
+
+.selector>div {
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 1px 1px 5px #666;
+    border-radius: 50%;
+}
+
+.selector0 {
+  background-color:rgba(255,0,0,0.1);
+}
+
+.selector1 {
+  background-color:rgba(0,255,0,0.1);
+}
+
+.values {
+  display: block;
+}
+
+
+/*:root {
+  --black: #000;
+  --white: #fff;
+}
+
+.baseStyle {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.someStyle {
+  composes: baseStyle;
+  font-size: 18px;
+}
+*/
