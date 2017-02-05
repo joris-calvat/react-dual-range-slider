@@ -137,7 +137,18 @@
           },
           "required": false,
           "defaultValue": {
-            "value": "[20, 60]",
+            "value": "[20, 40]",
+            "computed": false
+          },
+          "description": ""
+        },
+        "reverse": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "defaultValue": {
+            "value": "false",
             "computed": false
           },
           "description": ""

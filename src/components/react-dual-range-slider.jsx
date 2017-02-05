@@ -200,11 +200,15 @@ ReactDualRangeSlider.displayName = "ReactDualRangeSlider";
 ReactDualRangeSlider.propTypes = {
   limits: PropTypes.arrayOf(PropTypes.number),
   values: PropTypes.arrayOf(PropTypes.number),
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
+  format : PropTypes.func
 };
 
 ReactDualRangeSlider.defaultProps = {
   limits: [0, 100],
   values: [20, 40],
-  reverse: false
+  reverse: false,
+  format: function(value) {
+    return value;
+  }
 };
