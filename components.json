@@ -1,5 +1,150 @@
 {
   "library": "react-dual-range-slider",
   "description": "react-dual-range-slider",
-  "components": []
+  "components": [
+    {
+      "description": "",
+      "displayName": "ReactDualRangeSlider",
+      "methods": [
+        {
+          "name": "startToMove",
+          "docblock": "START TO MOVE",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "index"
+            }
+          ],
+          "returns": null,
+          "description": "START TO MOVE"
+        },
+        {
+          "name": "onMouseDown0",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
+          "name": "onMouseDown1",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
+          "name": "onMouseMove",
+          "docblock": "MOVE",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "returns": null,
+          "description": "MOVE"
+        },
+        {
+          "name": "getMoveCurrentValue",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "moveCurrentX",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
+          "name": "stopToMove",
+          "docblock": "STOP TO MOVE",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "returns": null,
+          "description": "STOP TO MOVE"
+        },
+        {
+          "name": "onMouseLeave",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
+          "name": "onMouseUp",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
+          "name": "getValues",
+          "docblock": null,
+          "modifiers": [],
+          "params": [],
+          "returns": null
+        }
+      ],
+      "props": {
+        "limits": {
+          "type": {
+            "name": "arrayOf",
+            "value": {
+              "name": "number"
+            }
+          },
+          "required": false,
+          "defaultValue": {
+            "value": "[0, 100]",
+            "computed": false
+          },
+          "description": ""
+        },
+        "values": {
+          "type": {
+            "name": "arrayOf",
+            "value": {
+              "name": "number"
+            }
+          },
+          "required": false,
+          "defaultValue": {
+            "value": "[20, 60]",
+            "computed": false
+          },
+          "description": ""
+        }
+      },
+      "fileName": "./src/components/react-dual-range-slider.jsx",
+      "hasProps": true
+    }
+  ]
 }

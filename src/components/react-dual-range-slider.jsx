@@ -18,7 +18,7 @@ export default class ReactDualRangeSlider extends React.Component {
       limits: limits,
       size: size,
       values:values,
-      reverse: false,
+      reverse: this.props.reverse,
       isSelDown: false,
       indexSelDown: 0,
       moveStartValue: 0,
@@ -71,11 +71,15 @@ export default class ReactDualRangeSlider extends React.Component {
   }
 
   getMoveCurrentValue (moveCurrentX) {
-    const moveBoxProportion = (moveCurrentX-this.state.moveStartX)/this.state.boxWidth;
+    let moveBoxProportion = (moveCurrentX-this.state.moveStartX)/this.state.boxWidth;
+    if(this.state.reverse) {
+      moveBoxProportion = moveBoxProportion*-1;
+    }
     const moveIntoLimit = this.state.size * moveBoxProportion;
     let moveCurrentValue = this.state.moveStartValue+moveIntoLimit;
     moveCurrentValue = moveCurrentValue<this.state.limits[0]?this.state.limits[0]:moveCurrentValue;
     moveCurrentValue = moveCurrentValue>this.state.limits[1]?this.state.limits[1]:moveCurrentValue;
+
     return moveCurrentValue;
   }
 
@@ -111,19 +115,20 @@ export default class ReactDualRangeSlider extends React.Component {
   }
 
   render() {
-    const reverse = this.state.reverse;
 
     const limits = this.state.limits.slice();
     const values = this.getValues().slice();
 
 
     const size = this.state.size;
+
+
     const left = [values[0]-limits[0], values[1]-limits[0]];
     const leftPos = [left[0]/size*100, left[1]/size*100];
 
-
-    if(reverse) {
-      
+    if(this.state.reverse) {
+      leftPos[0] = 100-leftPos[0];
+      leftPos[1] = 100-leftPos[1];
     }
 
     let crossLinePos = leftPos.slice();
@@ -194,10 +199,12 @@ ReactDualRangeSlider.displayName = "ReactDualRangeSlider";
 
 ReactDualRangeSlider.propTypes = {
   limits: PropTypes.arrayOf(PropTypes.number),
-  values: PropTypes.arrayOf(PropTypes.number)
+  values: PropTypes.arrayOf(PropTypes.number),
+  reverse: PropTypes.bool
 };
 
 ReactDualRangeSlider.defaultProps = {
   limits: [0, 100],
-  values: [20, 60]
+  values: [20, 40],
+  reverse: false
 };
