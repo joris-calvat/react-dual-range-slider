@@ -179,8 +179,8 @@ export default class ReactDualRangeSlider extends React.Component {
         </div>
         
         <div className={styles.values}>
-          <div>{values[0]}</div>
-          <div>{values[1]}</div>
+          <div className={styles.value} style={styleSelector0}>{values[0]}</div>
+          <div className={styles.value} style={styleSelector1}>{values[1]}</div>
         </div>
 
         <div>

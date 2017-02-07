@@ -91,6 +91,17 @@ user-select: none;
 
 .values {
   display: block;
+  position: relative;
+  
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.value {
+
+    display: block;
+    position: absolute;
+    transform: translate(-50%, 0);
 }
 
 

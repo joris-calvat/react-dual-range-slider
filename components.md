@@ -14,6 +14,7 @@ react-dual-range-slider
 | *limits* | arrayOf |  | `[0, 100]`
 | *values* | arrayOf |  | `[20, 40]`
 | *reverse* | bool |  | `false`
+| *format* | func |  | `function(value) { return value; }`
 
 ### import
 

@@ -152,6 +152,17 @@
             "computed": false
           },
           "description": ""
+        },
+        "format": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "defaultValue": {
+            "value": "function(value) {\r\n  return value;\r\n}",
+            "computed": false
+          },
+          "description": ""
         }
       },
       "fileName": "./src/components/react-dual-range-slider.jsx",
