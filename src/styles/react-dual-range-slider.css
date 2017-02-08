@@ -23,6 +23,8 @@ user-select: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-left:20px;
+  margin-right:20px;
 }
 
 .sliders {
@@ -57,7 +59,6 @@ user-select: none;
 }
 
 .selector {
-  background-color: rgba(0,0,0, 0.3);
   display: block;
   position:absolute;
   width:40px;
@@ -81,6 +82,7 @@ user-select: none;
     border-radius: 50%;
 }
 
+/*
 .selector0 {
   background-color:rgba(255,0,0,0.1);
 }
@@ -88,13 +90,16 @@ user-select: none;
 .selector1 {
   background-color:rgba(0,255,0,0.1);
 }
+*/
 
 .values {
+
   display: block;
   position: relative;
   
   margin-left: 20px;
   margin-right: 20px;
+  height:20px;
 }
 
 .value {
@@ -103,20 +108,3 @@ user-select: none;
     position: absolute;
     transform: translate(-50%, 0);
 }
-
-
-/*:root {
-  --black: #000;
-  --white: #fff;
-}
-
-.baseStyle {
-  background-color: var(--black);
-  color: var(--white);
-}
-
-.someStyle {
-  composes: baseStyle;
-  font-size: 18px;
-}
-*/

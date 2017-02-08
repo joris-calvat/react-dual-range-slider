@@ -25,7 +25,9 @@ export default class ReactDualRangeSlider extends React.Component {
       moveCurrentValue: 0,
       moveStartX: 0,
       moveCurrentX: 0,
-      boxWidth:0
+      boxWidth:0, 
+      formatFunc: this.props.formatFunc, 
+      onChange: this.props.onChange
     }
   }
 
@@ -83,6 +85,11 @@ export default class ReactDualRangeSlider extends React.Component {
     return moveCurrentValue;
   }
 
+  formatOutput () {
+    const values = this.getValues();
+    return [this.state.formatFunc(values[0]), this.state.formatFunc(values[1])];
+  }
+
   /**
    * STOP TO MOVE
    */
@@ -95,6 +102,7 @@ export default class ReactDualRangeSlider extends React.Component {
         isSelDown: false
       });
     }
+    this.onChange();
     event.stopPropagation();
   }
 
@@ -114,11 +122,16 @@ export default class ReactDualRangeSlider extends React.Component {
     return values;
   }
 
+  onChange() {
+    this.state.onChange(this.formatOutput().sort(function (a, b) { return a-b; }));
+  }
+
   render() {
 
     const limits = this.state.limits.slice();
     const values = this.getValues().slice();
 
+    const displayValues = this.formatOutput();
 
     const size = this.state.size;
 
@@ -179,15 +192,8 @@ export default class ReactDualRangeSlider extends React.Component {
         </div>
         
         <div className={styles.values}>
-          <div className={styles.value} style={styleSelector0}>{values[0]}</div>
-          <div className={styles.value} style={styleSelector1}>{values[1]}</div>
-        </div>
-
-        <div>
-          moveStartX = {this.state.moveStartX}<br />
-          moveCurrentX = {this.state.moveCurrentX}<br />
-          boxWidth = {this.state.boxWidth}<br />
-          moveCurrentValue = {this.state.moveCurrentValue}
+          <div className={styles.value} style={styleSelector0}>{displayValues[0]}</div>
+          <div className={styles.value} style={styleSelector1}>{displayValues[1]}</div>
         </div>
 
       </div>
@@ -201,14 +207,16 @@ ReactDualRangeSlider.propTypes = {
   limits: PropTypes.arrayOf(PropTypes.number),
   values: PropTypes.arrayOf(PropTypes.number),
   reverse: PropTypes.bool,
-  format : PropTypes.func
+  formatFunc : PropTypes.func,
+  onChange: PropTypes.func
 };
 
 ReactDualRangeSlider.defaultProps = {
   limits: [0, 100],
   values: [20, 40],
   reverse: false,
-  format: function(value) {
+  formatFunc: function(value) {
     return value;
-  }
+  },
+  onChange: function() {}
 };

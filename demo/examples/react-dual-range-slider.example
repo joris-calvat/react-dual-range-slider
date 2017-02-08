@@ -1,1 +1,1 @@
-<ReactDualRangeSlider />
+<ReactDualRangeSlider formatFunc={(v) => {return Math.floor(v)}} onChange={(values) => {console.log(values)}} />
