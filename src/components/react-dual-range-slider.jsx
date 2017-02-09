@@ -10,9 +10,12 @@ export default class ReactDualRangeSlider extends React.Component {
 
   constructor(props) {
     super(props);
-    let limits = this.props.limits;
-    let values = this.props.values;
+    let limits = this.props.limits.slice().sort(this.sortValues);
+    let values = this.props.values.slice().sort(this.sortValues);
     let size = Math.abs(limits[1]-limits[0]);
+
+    values[0] = values[0]<limits[0] ? limits[0] : values[0]>limits[1] ? limits[1] : values[0];
+    values[1] = values[1]>limits[1] ? limits[1] : values[1]<limits[0] ? limits[0] : values[1];
 
     this.state = {
       limits: limits,
@@ -101,8 +104,8 @@ export default class ReactDualRangeSlider extends React.Component {
         values: values,
         isSelDown: false
       });
+      this.onChange();
     }
-    this.onChange();
     event.stopPropagation();
   }
 
@@ -114,6 +117,22 @@ export default class ReactDualRangeSlider extends React.Component {
     this.stopToMove(event);
   }
 
+  /**
+   * GET 
+   */
+
+  getLimits() {
+    return this.state.limits.slice();
+  }
+
+  getDisplayLimits() {
+    let limits = this.getLimits();
+    if(this.state.reverse) {
+      limits.reverse();
+    }
+    return [this.state.formatFunc(limits[0]), this.state.formatFunc(limits[1])];
+  }
+
   getValues() {
     let values = this.state.values.slice();
     if(this.state.isSelDown) {
@@ -122,30 +141,44 @@ export default class ReactDualRangeSlider extends React.Component {
     return values;
   }
 
-  onChange() {
-    this.state.onChange(this.formatOutput().sort(function (a, b) { return a-b; }));
-  }
+  getLeftPositions() {
 
-  render() {
+    const values = this.getValues();
 
-    const limits = this.state.limits.slice();
-    const values = this.getValues().slice();
-
-    const displayValues = this.formatOutput();
+    const limits = this.getLimits();
 
     const size = this.state.size;
-
 
     const left = [values[0]-limits[0], values[1]-limits[0]];
     const leftPos = [left[0]/size*100, left[1]/size*100];
 
     if(this.state.reverse) {
-      leftPos[0] = 100-leftPos[0];
-      leftPos[1] = 100-leftPos[1];
+      return [100-leftPos[0], 100-leftPos[1]];
     }
+    return leftPos;
+  }
+
+  sortValues(a, b) { return a-b; }
+
+  /**
+   * onChange
+   */
+
+  onChange() {
+    this.state.onChange(this.formatOutput().sort(this.sortValues));
+  }
+
+  render() {
+
+
+    const displayValues = this.formatOutput();
+
+    const displayLimits = this.getDisplayLimits();
+
+    const leftPos = this.getLeftPositions();
 
     let crossLinePos = leftPos.slice();
-    crossLinePos.sort(function (a, b) { return a-b; });
+    crossLinePos.sort(this.sortValues);
     crossLinePos[1] = 100-crossLinePos[1];
 
     const styleCrossline = {
@@ -169,8 +202,8 @@ export default class ReactDualRangeSlider extends React.Component {
         data-name='component'>
 
         <div className={styles.limits}>
-          <div>{limits[0]}</div>
-          <div>{limits[1]}</div>
+          <div>{displayLimits[0]}</div>
+          <div>{displayLimits[1]}</div>
         </div>
 
         <div className={styles.sliders}>
@@ -213,7 +246,7 @@ ReactDualRangeSlider.propTypes = {
 
 ReactDualRangeSlider.defaultProps = {
   limits: [0, 100],
-  values: [20, 40],
+  values: [0, 100],
   reverse: false,
   formatFunc: function(value) {
     return value;

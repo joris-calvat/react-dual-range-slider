@@ -1,1 +1,24 @@
-<ReactDualRangeSlider formatFunc={(v) => {return Math.floor(v)}} onChange={(values) => {console.log(values)}} />
+<div>
+
+<ReactDualRangeSlider
+limits={[0, 10]}
+values={[0, 10]}
+formatFunc={(v) => { return Math.round(v); }}
+onChange={(values) => { console.log(values) }}
+/>
+
+<ReactDualRangeSlider
+limits={[-200, 200]}
+values={[-50, 50]}
+formatFunc={(v) => { return Math.round(v); }}
+onChange={(values) => { console.log(values) }}
+/>
+
+<ReactDualRangeSlider 
+limits={[-100000, -1000]}
+reverse={true} 
+formatFunc={(v) => { return Math.round(v); }}
+onChange={(values) => { console.log(values) }}
+/>
+
+</div>

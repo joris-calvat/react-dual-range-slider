@@ -1,11 +1,15 @@
 # react-dual-range-slider
 
-__COMPONENT DESCRIPTION GOES HERE__
+The react dual range slider is a UI input designed to set a range of values.
 
+You can set the limits and the values by default. 
+The reverse mode permits to get the highest limit value on the left, then the lowest on the right.
+It is done to format yourself the output, easy to round the values.
+Then an onChange event is triggered when the user stops to slide.
 
 ## Demo & Examples
 
-Live demo: [joris-calvat.github.io/react-dual-range-slider](http://joris-calvat.github.io/react-dual-range-slider/)
+![alt tag](/demo/demo.png)
 
 To build the examples locally, run:
 
@@ -14,7 +18,7 @@ npm install
 npm start
 ```
 
-Then open [`localhost:8000`](http://localhost:8000) in a browser.
+Then open [`localhost:4000`](http://localhost:4000) in a browser.
 
 
 ## Installation
@@ -30,22 +34,32 @@ npm install react-dual-range-slider --save
 
 ## Usage
 
-__EXPLAIN USAGE HERE__
-
 ```
 var ReactDualRangeSlider = require('react-dual-range-slider');
 
-<ReactDualRangeSlider>Example</ReactDualRangeSlider>
+<ReactDualRangeSlider />
 ```
 
 ### Properties
 
-* __DOCUMENT PROPERTIES HERE__
+Types
+```
+limits: PropTypes.arrayOf(PropTypes.number),
+values: PropTypes.arrayOf(PropTypes.number),
+reverse: PropTypes.bool,
+formatFunc : PropTypes.func,
+onChange: PropTypes.func
+```
 
-### Notes
-
-__ADDITIONAL USAGE NOTES__
-
+```
+<ReactDualRangeSlider
+limits={[0, 10]}
+values={[2, 5]}
+formatFunc={(v) => { return Math.round(v); }}
+onChange={(values) => { console.log(values) }}
+reverse={false}
+/>
+```
 
 ## Development (`src`, `lib` and the build process)
 
@@ -55,6 +69,4 @@ To build, watch and serve the examples (which will also watch the component sour
 
 ## License
 
-__PUT LICENSE HERE__
-
-Copyright (c) 2017 Joris Calvat.
+[MIT](http://spdx.org/licenses/MIT)

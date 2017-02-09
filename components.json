@@ -70,6 +70,13 @@
           "returns": null
         },
         {
+          "name": "formatOutput",
+          "docblock": null,
+          "modifiers": [],
+          "params": [],
+          "returns": null
+        },
+        {
           "name": "stopToMove",
           "docblock": "STOP TO MOVE",
           "modifiers": [],
@@ -106,11 +113,57 @@
           "returns": null
         },
         {
+          "name": "getLimits",
+          "docblock": "GET",
+          "modifiers": [],
+          "params": [],
+          "returns": null,
+          "description": "GET"
+        },
+        {
+          "name": "getDisplayLimits",
+          "docblock": null,
+          "modifiers": [],
+          "params": [],
+          "returns": null
+        },
+        {
           "name": "getValues",
           "docblock": null,
           "modifiers": [],
           "params": [],
           "returns": null
+        },
+        {
+          "name": "getLeftPositions",
+          "docblock": null,
+          "modifiers": [],
+          "params": [],
+          "returns": null
+        },
+        {
+          "name": "sortValues",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "a",
+              "type": null
+            },
+            {
+              "name": "b",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
+          "name": "onChange",
+          "docblock": "onChange",
+          "modifiers": [],
+          "params": [],
+          "returns": null,
+          "description": "onChange"
         }
       ],
       "props": {
@@ -137,7 +190,7 @@
           },
           "required": false,
           "defaultValue": {
-            "value": "[20, 40]",
+            "value": "[0, 100]",
             "computed": false
           },
           "description": ""
@@ -153,13 +206,24 @@
           },
           "description": ""
         },
-        "format": {
+        "formatFunc": {
           "type": {
             "name": "func"
           },
           "required": false,
           "defaultValue": {
             "value": "function(value) {\r\n  return value;\r\n}",
+            "computed": false
+          },
+          "description": ""
+        },
+        "onChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "defaultValue": {
+            "value": "function() {}",
             "computed": false
           },
           "description": ""

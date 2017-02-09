@@ -12,9 +12,10 @@ react-dual-range-slider
 | Property | Type | Description | Default |
 | -------- | ---- | ----------- | ------- |
 | *limits* | arrayOf |  | `[0, 100]`
-| *values* | arrayOf |  | `[20, 40]`
+| *values* | arrayOf |  | `[0, 100]`
 | *reverse* | bool |  | `false`
-| *format* | func |  | `function(value) { return value; }`
+| *formatFunc* | func |  | `function(value) { return value; }`
+| *onChange* | func |  | `function() {}`
 
 ### import
 
