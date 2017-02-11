@@ -16,6 +16,7 @@ react-dual-range-slider
 | *reverse* | bool |  | `false`
 | *formatFunc* | func |  | `function(value) { return value; }`
 | *onChange* | func |  | `function() {}`
+| *rangeColor* | string |  | `'#f60'`
 
 ### import
 

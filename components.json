@@ -8,7 +8,7 @@
       "methods": [
         {
           "name": "startToMove",
-          "docblock": "START TO MOVE",
+          "docblock": "startToMove\r\nevent triggered when the user starts to move",
           "modifiers": [],
           "params": [
             {
@@ -19,35 +19,35 @@
             }
           ],
           "returns": null,
-          "description": "START TO MOVE"
+          "description": "startToMove\r\nevent triggered when the user starts to move"
         },
         {
           "name": "onMouseDown0",
-          "docblock": null,
+          "docblock": "onMouseDown1\r\nevent triggered when the user mouse is down on slider 0",
           "modifiers": [],
           "params": [
             {
-              "name": "event",
-              "type": null
+              "name": "event"
             }
           ],
-          "returns": null
+          "returns": null,
+          "description": "onMouseDown1\r\nevent triggered when the user mouse is down on slider 0"
         },
         {
           "name": "onMouseDown1",
-          "docblock": null,
+          "docblock": "onMouseDown1\r\nevent triggered when the user mouse is down on slider 1",
           "modifiers": [],
           "params": [
             {
-              "name": "event",
-              "type": null
+              "name": "event"
             }
           ],
-          "returns": null
+          "returns": null,
+          "description": "onMouseDown1\r\nevent triggered when the user mouse is down on slider 1"
         },
         {
           "name": "onMouseMove",
-          "docblock": "MOVE",
+          "docblock": "onMouseMove\r\nevent triggered when the user moves his mouse",
           "modifiers": [],
           "params": [
             {
@@ -55,30 +55,31 @@
             }
           ],
           "returns": null,
-          "description": "MOVE"
+          "description": "onMouseMove\r\nevent triggered when the user moves his mouse"
         },
         {
           "name": "getMoveCurrentValue",
-          "docblock": null,
+          "docblock": "getMoveCurrentValue\r\nreturn the moving current value",
           "modifiers": [],
           "params": [
             {
-              "name": "moveCurrentX",
-              "type": null
+              "name": "moveCurrentX"
             }
           ],
-          "returns": null
+          "returns": null,
+          "description": "getMoveCurrentValue\r\nreturn the moving current value"
         },
         {
           "name": "formatOutput",
-          "docblock": null,
+          "docblock": "formatOutput\r\nreturn values well formated",
           "modifiers": [],
           "params": [],
-          "returns": null
+          "returns": null,
+          "description": "formatOutput\r\nreturn values well formated"
         },
         {
           "name": "stopToMove",
-          "docblock": "STOP TO MOVE",
+          "docblock": "stopToMove\r\nevent triggered when the user stop to move",
           "modifiers": [],
           "params": [
             {
@@ -86,84 +87,86 @@
             }
           ],
           "returns": null,
-          "description": "STOP TO MOVE"
+          "description": "stopToMove\r\nevent triggered when the user stop to move"
         },
         {
           "name": "onMouseLeave",
-          "docblock": null,
+          "docblock": "onMouseLeave\r\nevent triggered when the user leave the area with the mouse",
           "modifiers": [],
           "params": [
             {
-              "name": "event",
-              "type": null
+              "name": "event"
             }
           ],
-          "returns": null
+          "returns": null,
+          "description": "onMouseLeave\r\nevent triggered when the user leave the area with the mouse"
         },
         {
           "name": "onMouseUp",
-          "docblock": null,
+          "docblock": "onMouseUp\r\nevent triggered the user stop to drag a slider with the mouse",
           "modifiers": [],
           "params": [
             {
-              "name": "event",
-              "type": null
+              "name": "event"
             }
           ],
-          "returns": null
+          "returns": null,
+          "description": "onMouseUp\r\nevent triggered the user stop to drag a slider with the mouse"
         },
         {
           "name": "getLimits",
-          "docblock": "GET",
+          "docblock": "getLimits\r\nreturn limits",
           "modifiers": [],
           "params": [],
           "returns": null,
-          "description": "GET"
+          "description": "getLimits\r\nreturn limits"
         },
         {
           "name": "getDisplayLimits",
-          "docblock": null,
-          "modifiers": [],
-          "params": [],
-          "returns": null
-        },
-        {
-          "name": "getValues",
-          "docblock": null,
-          "modifiers": [],
-          "params": [],
-          "returns": null
-        },
-        {
-          "name": "getLeftPositions",
-          "docblock": null,
-          "modifiers": [],
-          "params": [],
-          "returns": null
-        },
-        {
-          "name": "sortValues",
-          "docblock": null,
-          "modifiers": [],
-          "params": [
-            {
-              "name": "a",
-              "type": null
-            },
-            {
-              "name": "b",
-              "type": null
-            }
-          ],
-          "returns": null
-        },
-        {
-          "name": "onChange",
-          "docblock": "onChange",
+          "docblock": "getDisplayLimits\r\nreturn limits well formated",
           "modifiers": [],
           "params": [],
           "returns": null,
-          "description": "onChange"
+          "description": "getDisplayLimits\r\nreturn limits well formated"
+        },
+        {
+          "name": "getValues",
+          "docblock": "getValues\r\nreturn current values, including when sliding",
+          "modifiers": [],
+          "params": [],
+          "returns": null,
+          "description": "getValues\r\nreturn current values, including when sliding"
+        },
+        {
+          "name": "getLeftPositions",
+          "docblock": "getLeftPositions\r\nreturn left position as a proportion",
+          "modifiers": [],
+          "params": [],
+          "returns": null,
+          "description": "getLeftPositions\r\nreturn left position as a proportion"
+        },
+        {
+          "name": "sortValues",
+          "docblock": "sortValues\r\nascending sort method for arrays",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "a"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "returns": null,
+          "description": "sortValues\r\nascending sort method for arrays"
+        },
+        {
+          "name": "onChange",
+          "docblock": "onChange\r\ntrigger the onChange method output",
+          "modifiers": [],
+          "params": [],
+          "returns": null,
+          "description": "onChange\r\ntrigger the onChange method output"
         }
       ],
       "props": {
@@ -224,6 +227,17 @@
           "required": false,
           "defaultValue": {
             "value": "function() {}",
+            "computed": false
+          },
+          "description": ""
+        },
+        "rangeColor": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "defaultValue": {
+            "value": "'#f60'",
             "computed": false
           },
           "description": ""

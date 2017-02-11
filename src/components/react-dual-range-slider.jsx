@@ -7,7 +7,7 @@ import messages from "../lang/default-messages";
 export default class ReactDualRangeSlider extends React.Component {
 
   constructor(props) {
-    
+
     super(props);
     let limits = this.props.limits.slice().sort(this.sortValues);
     let values = this.props.values.slice().sort(this.sortValues);
@@ -185,6 +185,13 @@ export default class ReactDualRangeSlider extends React.Component {
     return values;
   }
 
+  
+  getDisplayValues() {
+    let values = this.formatOutput().sort(this.sortValues);
+    values = this.state.reverse ? values.reverse(): values;
+    return values;
+  }
+
   /**
    * getLeftPositions
    * return left position as a proportion
@@ -230,8 +237,7 @@ export default class ReactDualRangeSlider extends React.Component {
 
   render() {
 
-
-    const displayValues = this.formatOutput();
+    const displayValues = this.getDisplayValues();
 
     const displayLimits = this.getDisplayLimits();
 
@@ -267,11 +273,6 @@ export default class ReactDualRangeSlider extends React.Component {
         onMouseUp={this.onMouseUp.bind(this)}
         data-name='component'>
 
-        <div className={styles.limits}>
-          <div>{displayLimits[0]}</div>
-          <div>{displayLimits[1]}</div>
-        </div>
-
         <div className={styles.sliders}>
           <div className={styles.line}><div className={styles.crossLine} style={styleCrossline}></div></div>
           <div 
@@ -291,9 +292,11 @@ export default class ReactDualRangeSlider extends React.Component {
         </div>
         
         <div className={styles.values}>
+          <div className={styles.limit}>{displayLimits[0]}</div>
           <div className={styles.value}>{displayValues[0]}</div>
           <div className={styles.valueRange} style={styleValueRange}></div>
           <div className={styles.value}>{displayValues[1]}</div>
+          <div className={styles.limit}>{displayLimits[1]}</div>
         </div>
 
       </div>

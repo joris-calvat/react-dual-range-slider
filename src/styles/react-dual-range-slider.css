@@ -17,15 +17,7 @@ user-select: none;
 .component {
   display: flex;
   flex-direction: column;
-  min-width:200px;
-}
-
-.limits {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left:20px;
-  margin-right:20px;
+  min-width:280px;
 }
 
 .sliders {
@@ -48,7 +40,7 @@ user-select: none;
   bottom:15px;
   left:0;
   right:0;
-  background-color:#aaa;
+  background-color:#ccc;
   border-radius:10px;
   overflow: hidden;
 }
@@ -79,19 +71,9 @@ user-select: none;
     bottom: 0;
     right: 0;
     left: 0;
-    box-shadow: 1px 1px 5px #aaa;
+    box-shadow: 1px 1px 5px #ccc;
     border-radius: 50%;
 }
-
-/*
-.selector0 {
-  background-color:rgba(255,0,0,0.1);
-}
-
-.selector1 {
-  background-color:rgba(0,255,0,0.1);
-}
-*/
 
 .values {
 
@@ -103,19 +85,29 @@ user-select: none;
   margin-left: 20px;
   margin-right: 20px;
   height:20px;
+
+  position: relative;
+  top: -5px;
 }
 
-.value {
-    min-width:70px;
-    display: block;
+.limit {
+  color:#ccc;
 }
 
-.value:first-child {
+.values>div:last-child,
+.values>div:nth-child(2) {
   text-align: right;
 }
 
+.limit,
+.value {
+  flex-grow:1;
+  min-width: 20%;
+}
+
 .valueRange {
-  width:40px;
+  flex-grow:2;
+  min-width: 20px;
   background-color:#f60;
   height:1px;
   margin-left:10px;
@@ -123,6 +115,7 @@ user-select: none;
   position:relative;
 }
 
+/*
 .valueRange::before {
     width: 0px;
     height: 25px;
@@ -136,3 +129,4 @@ user-select: none;
     border-style: dashed;
     border-color: #aaa;
 }
+*/
