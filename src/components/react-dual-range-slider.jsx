@@ -6,9 +6,8 @@ import messages from "../lang/default-messages";
 
 export default class ReactDualRangeSlider extends React.Component {
 
-
-
   constructor(props) {
+    
     super(props);
     let limits = this.props.limits.slice().sort(this.sortValues);
     let values = this.props.values.slice().sort(this.sortValues);
@@ -30,12 +29,14 @@ export default class ReactDualRangeSlider extends React.Component {
       moveCurrentX: 0,
       boxWidth:0, 
       formatFunc: this.props.formatFunc, 
-      onChange: this.props.onChange
+      onChange: this.props.onChange,
+      rangeColor: this.props.rangeColor
     }
   }
 
   /**
-   * START TO MOVE
+   * startToMove
+   * event triggered when the user starts to move
    */
 
   startToMove(event, index) {
@@ -51,9 +52,19 @@ export default class ReactDualRangeSlider extends React.Component {
     event.stopPropagation();
   }
 
+  /**
+   * onMouseDown1
+   * event triggered when the user mouse is down on slider 0
+   */
+
   onMouseDown0(event) {
     this.startToMove(event, 0);
   }
+
+  /**
+   * onMouseDown1
+   * event triggered when the user mouse is down on slider 1
+   */
 
   onMouseDown1(event) {
     this.startToMove(event, 1);
@@ -61,7 +72,8 @@ export default class ReactDualRangeSlider extends React.Component {
 
 
   /**
-   * MOVE
+   * onMouseMove
+   * event triggered when the user moves his mouse
    */
 
   onMouseMove(event) {
@@ -74,6 +86,11 @@ export default class ReactDualRangeSlider extends React.Component {
       });
     }
   }
+
+  /**
+   * getMoveCurrentValue
+   * return the moving current value
+   */
 
   getMoveCurrentValue (moveCurrentX) {
     let moveBoxProportion = (moveCurrentX-this.state.moveStartX)/this.state.boxWidth;
@@ -88,13 +105,19 @@ export default class ReactDualRangeSlider extends React.Component {
     return moveCurrentValue;
   }
 
+  /**
+   * formatOutput
+   * return values well formated 
+   */
+
   formatOutput () {
     const values = this.getValues();
     return [this.state.formatFunc(values[0]), this.state.formatFunc(values[1])];
   }
 
   /**
-   * STOP TO MOVE
+   * stopToMove
+   * event triggered when the user stop to move
    */
   
   stopToMove(event) {
@@ -109,21 +132,37 @@ export default class ReactDualRangeSlider extends React.Component {
     event.stopPropagation();
   }
 
+  /**
+   * onMouseLeave
+   * event triggered when the user leave the area with the mouse
+   */
+
   onMouseLeave(event) {
     this.stopToMove(event);
   }
+
+  /**
+   * onMouseUp
+   * event triggered the user stop to drag a slider with the mouse
+   */
 
   onMouseUp(event) {
     this.stopToMove(event);
   }
 
   /**
-   * GET 
+   * getLimits
+   * return limits
    */
 
   getLimits() {
     return this.state.limits.slice();
   }
+
+  /**
+   * getDisplayLimits
+   * return limits well formated
+   */
 
   getDisplayLimits() {
     let limits = this.getLimits();
@@ -133,6 +172,11 @@ export default class ReactDualRangeSlider extends React.Component {
     return [this.state.formatFunc(limits[0]), this.state.formatFunc(limits[1])];
   }
 
+  /**
+   * getValues
+   * return current values, including when sliding
+   */
+
   getValues() {
     let values = this.state.values.slice();
     if(this.state.isSelDown) {
@@ -140,6 +184,11 @@ export default class ReactDualRangeSlider extends React.Component {
     }
     return values;
   }
+
+  /**
+   * getLeftPositions
+   * return left position as a proportion
+   */
 
   getLeftPositions() {
 
@@ -158,15 +207,26 @@ export default class ReactDualRangeSlider extends React.Component {
     return leftPos;
   }
 
+  /**
+   * sortValues
+   * ascending sort method for arrays
+   */
+
   sortValues(a, b) { return a-b; }
 
   /**
    * onChange
+   * trigger the onChange method output
    */
 
   onChange() {
     this.state.onChange(this.formatOutput().sort(this.sortValues));
   }
+
+  /**
+   * render
+   * component rendering method 
+   */
 
   render() {
 
@@ -183,8 +243,10 @@ export default class ReactDualRangeSlider extends React.Component {
 
     const styleCrossline = {
       left:crossLinePos[0]+'%',
-      right:crossLinePos[1]+'%'
+      right:crossLinePos[1]+'%',
+      backgroundColor:this.props.rangeColor
     };
+
 
     const styleSelector0 = {
       left:leftPos[0]+'%'
@@ -192,6 +254,10 @@ export default class ReactDualRangeSlider extends React.Component {
 
     const styleSelector1 = {
       left:leftPos[1]+'%'
+    };
+
+    const styleValueRange = {
+      backgroundColor:this.props.rangeColor
     };
 
     return (
@@ -225,8 +291,9 @@ export default class ReactDualRangeSlider extends React.Component {
         </div>
         
         <div className={styles.values}>
-          <div className={styles.value} style={styleSelector0}>{displayValues[0]}</div>
-          <div className={styles.value} style={styleSelector1}>{displayValues[1]}</div>
+          <div className={styles.value}>{displayValues[0]}</div>
+          <div className={styles.valueRange} style={styleValueRange}></div>
+          <div className={styles.value}>{displayValues[1]}</div>
         </div>
 
       </div>
@@ -241,7 +308,8 @@ ReactDualRangeSlider.propTypes = {
   values: PropTypes.arrayOf(PropTypes.number),
   reverse: PropTypes.bool,
   formatFunc : PropTypes.func,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  rangeColor: PropTypes.string
 };
 
 ReactDualRangeSlider.defaultProps = {
@@ -251,5 +319,6 @@ ReactDualRangeSlider.defaultProps = {
   formatFunc: function(value) {
     return value;
   },
-  onChange: function() {}
+  onChange: function() {},
+  rangeColor:'#f60'
 };

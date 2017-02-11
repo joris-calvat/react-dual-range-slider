@@ -12,13 +12,16 @@ limits={[-200, 200]}
 values={[-50, 50]}
 formatFunc={(v) => { return Math.round(v); }}
 onChange={(values) => { console.log(values) }}
+rangeColor="#0f6"
 />
 
 <ReactDualRangeSlider 
 limits={[-100000, -1000]}
+values={[-50000, -10000]}
 reverse={true} 
 formatFunc={(v) => { return Math.round(v); }}
 onChange={(values) => { console.log(values) }}
+rangeColor="blue"
 />
 
 </div>

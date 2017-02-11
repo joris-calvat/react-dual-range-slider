@@ -2,10 +2,13 @@
 
 The react dual range slider is a UI input designed to set a range of values.
 
-You can set the limits and the values by default. 
-The reverse mode permits to get the highest limit value on the left, then the lowest on the right.
-It is done to format yourself the output, easy to round the values.
-Then an onChange event is triggered when the user stops to slide.
+You can set the limits and the values by default.
+The reverse mode permits to switch the order of limit values on left/right.
+
+An onChange event is triggered when the user stops to slide.
+Pass a function to format yourself the output, easy to round the values.
+
+It is possible to set a personalized range color.
 
 ## Demo & Examples
 
@@ -48,7 +51,8 @@ limits: PropTypes.arrayOf(PropTypes.number),
 values: PropTypes.arrayOf(PropTypes.number),
 reverse: PropTypes.bool,
 formatFunc : PropTypes.func,
-onChange: PropTypes.func
+onChange: PropTypes.func,
+rangeColor: PropTypes.string
 ```
 
 ```
@@ -58,6 +62,7 @@ values={[2, 5]}
 formatFunc={(v) => { return Math.round(v); }}
 onChange={(values) => { console.log(values) }}
 reverse={false}
+rangeColor="#0f6"
 />
 ```
 
