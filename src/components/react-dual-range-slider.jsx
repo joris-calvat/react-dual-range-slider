@@ -14,12 +14,7 @@ export default class ReactDualRangeSlider extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
-    let props = {};
-    for(el in this.props) {
-      props[el] = this.props[el];
-    }
-    this.setState(this.getStateFromProps(props));
+    this.setState(this.getStateFromProps(nextProps));
   }
 
   getStateFromProps(props) {

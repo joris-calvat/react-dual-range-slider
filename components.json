@@ -58,6 +58,54 @@
           "description": "onMouseDown1\r\nevent triggered when the user mouse is down on slider 1"
         },
         {
+          "name": "onTouchStart0",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
+          "name": "onTouchStart1",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
+          "name": "onTouchMove",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
+          "name": "onTouchEnd",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
           "name": "onMouseMove",
           "docblock": "onMouseMove\r\nevent triggered when the user moves his mouse",
           "modifiers": [],
@@ -68,6 +116,18 @@
           ],
           "returns": null,
           "description": "onMouseMove\r\nevent triggered when the user moves his mouse"
+        },
+        {
+          "name": "move",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "event",
+              "type": null
+            }
+          ],
+          "returns": null
         },
         {
           "name": "getMoveCurrentValue",
