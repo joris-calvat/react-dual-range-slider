@@ -1,6 +1,7 @@
 # react-dual-range-slider
 
 The react dual range slider is a UI input designed to set a range of values.
+It works with mouse events for desktop and touch events for mobile devices.
 
 You can set the limits and the values by default.
 Lock a value to get a simple slider, or both to draw the range without any slider.

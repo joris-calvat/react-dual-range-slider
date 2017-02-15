@@ -56,13 +56,14 @@ export default class ReactDualRangeSlider extends React.Component {
    */
 
   startToMove(event, index) {
+    const clientX = event.touches && event.touches.length>0 ? event.touches[0].clientX : event.clientX;
     this.setState({
       isSelDown:true,
       indexSelDown: index,
       moveStartValue: this.state.values[index],
       moveCurrentValue: this.state.values[index],
-      moveStartX: event.clientX,
-      moveCurrentX: event.clientX,
+      moveStartX: clientX,
+      moveCurrentX: clientX,
       boxWidth:event.currentTarget.parentElement.offsetWidth
     });
     event.stopPropagation();
@@ -86,6 +87,26 @@ export default class ReactDualRangeSlider extends React.Component {
     this.startToMove(event, 1);
   }
 
+  onTouchStart0(event) {
+    this.startToMove(event, 0);
+  }
+
+  onTouchStart1(event) {
+    this.startToMove(event, 1);
+  }
+
+
+  onTouchMove(event) {
+    
+    this.move(event);
+  }
+  
+  onTouchEnd(event) {
+    
+    this.stopToMove(event);
+  }
+
+
 
   /**
    * onMouseMove
@@ -94,11 +115,16 @@ export default class ReactDualRangeSlider extends React.Component {
 
   onMouseMove(event) {
     
+    this.move(event);
+  }
+
+  move(event) {
+    
     if(this.state.isSelDown) {
-      const currentX = event.clientX;
+      const clientX = event.touches && event.touches.length>0 ? event.touches[0].clientX : event.clientX;
       this.setState({
-        moveCurrentX: currentX,
-        moveCurrentValue: this.getMoveCurrentValue (currentX)
+        moveCurrentX: clientX,
+        moveCurrentValue: this.getMoveCurrentValue (clientX)
       });
     }
   }
@@ -289,6 +315,9 @@ export default class ReactDualRangeSlider extends React.Component {
         onMouseMove={this.onMouseMove.bind(this)}
         onMouseLeave={this.onMouseLeave.bind(this)}
         onMouseUp={this.onMouseUp.bind(this)}
+
+        onTouchMove={this.onTouchMove.bind(this)}
+        onTouchEnd={this.onTouchEnd.bind(this)}
         data-name='component'>
 
         <div className={styles.sliders}>
@@ -297,6 +326,7 @@ export default class ReactDualRangeSlider extends React.Component {
             className={[styles.selector, styles.selector0].join(' ')} 
             style={styleSelector0}
             onMouseDown={this.onMouseDown0.bind(this)}
+            onTouchStart={this.onTouchStart0.bind(this)}
             >
             <div></div>
           </div>
@@ -304,6 +334,7 @@ export default class ReactDualRangeSlider extends React.Component {
             className={[styles.selector, styles.selector1].join(' ')} 
             style={styleSelector1}
             onMouseDown={this.onMouseDown1.bind(this)}
+            onTouchStart={this.onTouchStart1.bind(this)}
             >
             <div></div>
           </div>

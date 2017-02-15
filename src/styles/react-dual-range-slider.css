@@ -40,7 +40,7 @@ user-select: none;
   bottom:15px;
   left:0;
   right:0;
-  background-color:#ccc;
+  background-color:#ddd;
   border-radius:10px;
   overflow: hidden;
 }
@@ -71,7 +71,7 @@ user-select: none;
     bottom: 0;
     right: 0;
     left: 0;
-    box-shadow: 1px 1px 5px #ccc;
+    box-shadow: 1px 1px 5px #666;
     border-radius: 50%;
 }
 
