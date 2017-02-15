@@ -35,6 +35,7 @@ export default class ReactDualRangeSlider extends React.Component {
       limits: limits,
       size: size,
       values:values,
+      lock: props.lock,
       reverse: props.reverse,
       isSelDown: false,
       indexSelDown: 0,
@@ -270,11 +271,13 @@ export default class ReactDualRangeSlider extends React.Component {
 
 
     const styleSelector0 = {
-      left:leftPos[0]+'%'
+      left:leftPos[0]+'%',
+      display: this.props.lock[0] === false ? 'block' : 'none'
     };
 
     const styleSelector1 = {
-      left:leftPos[1]+'%'
+      left:leftPos[1]+'%',
+      display: this.props.lock[1] === false ? 'block' : 'none'
     };
 
     const styleValueRange = {
@@ -324,6 +327,7 @@ ReactDualRangeSlider.displayName = "ReactDualRangeSlider";
 ReactDualRangeSlider.propTypes = {
   limits: PropTypes.arrayOf(PropTypes.number),
   values: PropTypes.arrayOf(PropTypes.number),
+  lock: PropTypes.arrayOf(PropTypes.bool),
   reverse: PropTypes.bool,
   formatFunc : PropTypes.func,
   onChange: PropTypes.func,
@@ -333,6 +337,7 @@ ReactDualRangeSlider.propTypes = {
 ReactDualRangeSlider.defaultProps = {
   limits: [0, 100],
   values: [0, 100],
+  lock: [false, false],
   reverse: false,
   formatFunc: function(value) {
     return value;

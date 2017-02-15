@@ -13,6 +13,7 @@ react-dual-range-slider
 | -------- | ---- | ----------- | ------- |
 | *limits* | arrayOf |  | `[0, 100]`
 | *values* | arrayOf |  | `[0, 100]`
+| *lock* | arrayOf |  | `[false, false]`
 | *reverse* | bool |  | `false`
 | *formatFunc* | func |  | `function(value) { return value; }`
 | *onChange* | func |  | `function() {}`

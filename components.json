@@ -217,6 +217,20 @@
           },
           "description": ""
         },
+        "lock": {
+          "type": {
+            "name": "arrayOf",
+            "value": {
+              "name": "bool"
+            }
+          },
+          "required": false,
+          "defaultValue": {
+            "value": "[false, false]",
+            "computed": false
+          },
+          "description": ""
+        },
         "reverse": {
           "type": {
             "name": "bool"

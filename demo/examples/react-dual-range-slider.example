@@ -2,17 +2,36 @@
 
 <ReactDualRangeSlider
 limits={[0, 10]}
-values={[1, 10]}
+values={[3, 6]}
 formatFunc={(v) => { return Math.round(v); }}
 onChange={(values) => { console.log(values) }}
 />
 
 <ReactDualRangeSlider
+limits={[0, 10]}
+values={[0, 5]}
+lock={[true, false]}
+formatFunc={(v) => { return Math.round(v); }}
+onChange={(values) => { console.log(values) }}
+rangeColor="#f00"
+/>
+
+<ReactDualRangeSlider
 limits={[-200, 200]}
 values={[-50, 50]}
+lock={[true, false]}
 formatFunc={(v) => { return Math.round(v); }}
 onChange={(values) => { console.log(values) }}
 rangeColor="#0f6"
+/>
+
+<ReactDualRangeSlider
+limits={[-1, 1]}
+values={[0, 0.5]}
+lock={[true, false]}
+formatFunc={(v) => { return Math.round(v*1000)/1000; }}
+onChange={(values) => { console.log(values) }}
+rangeColor="#06f"
 />
 
 <ReactDualRangeSlider 
