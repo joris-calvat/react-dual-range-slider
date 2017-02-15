@@ -9,18 +9,33 @@ export default class ReactDualRangeSlider extends React.Component {
   constructor(props) {
 
     super(props);
-    let limits = this.props.limits.slice().sort(this.sortValues);
-    let values = this.props.values.slice().sort(this.sortValues);
+
+    this.state = this.getStateFromProps(props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    let props = {};
+    for(el in this.props) {
+      props[el] = this.props[el];
+    }
+    this.setState(this.getStateFromProps(props));
+  }
+
+  getStateFromProps(props) {
+
+    let limits = props.limits.slice().sort(this.sortValues);
+    let values = props.values.slice().sort(this.sortValues);
     let size = Math.abs(limits[1]-limits[0]);
 
     values[0] = values[0]<limits[0] ? limits[0] : values[0]>limits[1] ? limits[1] : values[0];
     values[1] = values[1]>limits[1] ? limits[1] : values[1]<limits[0] ? limits[0] : values[1];
 
-    this.state = {
+    return {
       limits: limits,
       size: size,
       values:values,
-      reverse: this.props.reverse,
+      reverse: props.reverse,
       isSelDown: false,
       indexSelDown: 0,
       moveStartValue: 0,
@@ -28,9 +43,9 @@ export default class ReactDualRangeSlider extends React.Component {
       moveStartX: 0,
       moveCurrentX: 0,
       boxWidth:0, 
-      formatFunc: this.props.formatFunc, 
-      onChange: this.props.onChange,
-      rangeColor: this.props.rangeColor
+      formatFunc: props.formatFunc, 
+      onChange: props.onChange,
+      rangeColor: props.rangeColor
     }
   }
 

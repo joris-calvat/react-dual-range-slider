@@ -7,6 +7,18 @@
       "displayName": "ReactDualRangeSlider",
       "methods": [
         {
+          "name": "getStateFromProps",
+          "docblock": null,
+          "modifiers": [],
+          "params": [
+            {
+              "name": "props",
+              "type": null
+            }
+          ],
+          "returns": null
+        },
+        {
           "name": "startToMove",
           "docblock": "startToMove\r\nevent triggered when the user starts to move",
           "modifiers": [],
@@ -136,6 +148,13 @@
           "params": [],
           "returns": null,
           "description": "getValues\r\nreturn current values, including when sliding"
+        },
+        {
+          "name": "getDisplayValues",
+          "docblock": null,
+          "modifiers": [],
+          "params": [],
+          "returns": null
         },
         {
           "name": "getLeftPositions",
